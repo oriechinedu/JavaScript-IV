@@ -9,7 +9,7 @@ class Person {
       gender
      } = props;
      this.name = name;
-     this.age= age;
+     this.age = age;
      this.location = location;
      this.gender = gender;
   }
@@ -44,7 +44,8 @@ class Student extends Person {
     const {
       previousBackground,
       className,
-      favSubjects
+      favSubjects,
+      grade
     } = props;
     this.previousBackground = previousBackground;
     this.className = className;
@@ -175,7 +176,36 @@ yusuf.listsSubjects();
 console.log(yusuf.PRAssignment('Javascript IV'))
 console.log(yusuf.previousBackground)
 
+const sorin = new ProjectManager({
+  name: 'Sorin',
+  age: 28,
+  location: 'Romania',
+  gender: 'Male',
+  gradClassName: 'WEBEU1',
+  favInstructor: 'Josh',
+  specialty: 'Backend',
+  favLanguage: 'Javascript',
+  catchPhrase: 'Life is good with beautiful lines of code 😊'
+})
+console.log(sorin.catchPhrase)
+console.log(sorin.standUp('webeu2_sorin'))
+console.log(sorin.debugsCode({name: 'Chinedu'}, 'Javascript IV'))
 
+const foo = new ProjectManager({
+  name: 'Foo',
+  age: 28,
+  location: 'London',
+  gender: 'Male',
+  gradClassName: 'WEBEU1',
+  favInstructor: 'Bar',
+  specialty: 'Backend',
+  favLanguage: 'Javascript',
+  catchPhrase: 'Coding is about creating and fixing bugs 😂'
+})
+
+console.log(foo.catchPhrase)
+console.log(foo.standUp('webeu2_foo'))
+console.log(foo.debugsCode({name: 'bar'}, 'Javascript IV'))
 
 
 

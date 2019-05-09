@@ -86,6 +86,13 @@ class Humanoid extends CharacterStats {
   greet() {
     return `${this.name} offers a greeting in ${this.language}.`;
   }
+  isDead(name) {
+    if (this.healthPoints === 0) {
+      return `Damn!!! ${name} is dead!!!`
+    } else {
+      return `aww! my healthPoint is remaining ${this.healthPoints} and I'll be gone`;
+    }
+  }
 }
 // function Humanoid( properties) {
 //   CharacterStats.apply(this, [properties])
@@ -180,24 +187,16 @@ class Villain extends Humanoid {
     super(props)
     console.log(props)
   }
-  isDead() {
-    if (this.healthPoints === 0) {
-      return 'I\'m dead!!!'
-    } else {
-      return `It's ${this.healthPoints} and I'll be gone`;
-    }
-  }
-  fight(points = 1) {
 
+  fight(points = 1) {
     if (this.healthPoints > 0 && this.healthPoints > points) {
       this.healthPoints = this.healthPoints - points;
-      return this.isDead()
-
-    } else if (this.healthPoints > 0 && this.healthPoints < points || this.healthPoints === 0) {
+      return this.isDead('Villain')
+    } else if (this.healthPoints > 0 && this.healthPoints <= points ) {
       this.healthPoints = 0;
-      return this.isDead()
+      return this.isDead('Villain')
     } else {
-      return this.isDead();
+      return this.isDead('Villain');
     }
   }
   punch(opponent) {
@@ -209,24 +208,15 @@ class Hero extends Humanoid {
   constructor(props) {
     super(props)
   }
-  isDead() {
-    if (this.healthPoints === 0) {
-      return 'I\'m dead!!!'
-    } else {
-      return `It's ${this.healthPoints} and I'll be gone`;
-    }
-  }
   fight(points = 1) {
-
     if (this.healthPoints > 0 && this.healthPoints > points) {
       this.healthPoints = this.healthPoints - points;
-      return this.isDead()
-
-    } else if (this.healthPoints > 0 && this.healthPoints < points || this.healthPoints === 0) {
+      return this.isDead('Hero')
+    } else if (this.healthPoints > 0 && this.healthPoints <= points ) {
       this.healthPoints = 0;
-      return this.isDead()
-    } else {
-      return this.isDead();
+      return this.isDead('Hero')
+    }  else {
+      return this.isDead('Hero');
     }
   }
   punch(opponent) {
@@ -235,7 +225,7 @@ class Hero extends Humanoid {
 }
 
 
-const vivi = new Villain({
+const villainObj = new Villain({
   createdAt: new Date(),
   dimensions: {
     length: 4,
@@ -252,7 +242,7 @@ const vivi = new Villain({
   language: 'Elvish',
 });
 
-const hihi = new Hero({
+const heroObj = new Hero({
   createdAt: new Date(),
   dimensions: {
     length: 4,
@@ -269,8 +259,15 @@ const hihi = new Hero({
   language: 'Elvish',
 });
 
-console.log(hihi.punch(vivi.fight.bind(vivi, 5)))
-console.log(hihi.punch(vivi.fight.bind(vivi, 4)))
+console.log(heroObj.punch(villainObj.fight.bind(villainObj, 1)))
+console.log(heroObj.punch(villainObj.fight.bind(villainObj, 2)))
+console.log(heroObj.punch(villainObj.fight.bind(villainObj, 4)))
+console.log(heroObj.punch(villainObj.fight.bind(villainObj, 3)))
+
+console.log(villainObj.punch(heroObj.fight.bind(heroObj, 1)))
+console.log(villainObj.punch(heroObj.fight.bind(heroObj, 2)))
+console.log(villainObj.punch(heroObj.fight.bind(heroObj, 4)))
+console.log(villainObj.punch(heroObj.fight.bind(heroObj, 3)))
 
 
 
