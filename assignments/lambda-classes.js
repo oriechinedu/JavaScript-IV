@@ -71,7 +71,7 @@ class ProjectManager extends Instructor {
       favInstructor,
     } = props;
     this.gradClassName = gradClassName;
-    this.favInstructor = this.favInstructor;
+    this.favInstructor = favInstructor;
   }
   standUp(channel) {
     return `${this.name} announces to ${channel}, @channel standy times!​​​​​`
@@ -92,14 +92,15 @@ const fred = new Instructor({
   catchPhrase: `Don't forget the homies`
 });
 
-// testing Person
-console.log(fred)
+/*  === Start Person test === */
+
 const benjamin = new Person({
   name: 'Benjamin',
   age: 19,
   gender: 'Male',
   location: 'Lagos'
 });
+
 const kells = new Person({
   name: 'Kells',
   age: 18,
@@ -111,4 +112,42 @@ console.log(kells.name)
 console.log(kells.speak())
 console.log(benjamin.name)
 console.log(benjamin.speak())
+
+/*  ==End Person test == */
+
+const jon = new Instructor({
+  name: 'Jon',
+  location: 'Wonderland',
+  age: 28,
+  gender: 'others',
+  favLanguage: 'ReactJs',
+  specialty: 'Backend',
+  catchPhrase: `The world is just a bunch of objects`
+});
+
+console.log(jon.demo('Advanced CSS'))
+console.log(jon.grade({ name: 'Vincent'}, 'Advanced CSS'))
+console.log(jon.favLanguage)
+
+const jane = new Instructor({
+  name: 'Jane',
+  location: 'Nowhere',
+  age: 100,
+  gender: 'others',
+  favLanguage: 'Next Language',
+  specialty: 'Mid-end',
+  catchPhrase: `life is made up of lines of codes`
+});
+
+console.log(jane.favLanguage)
+console.log(jane.catchPhrase);
+console.log(jon.grade({ name: 'Doe'}, 'Javascript'))
+
+
+
+
+
+
+
+
 
