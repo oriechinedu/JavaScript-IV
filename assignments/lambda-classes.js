@@ -33,8 +33,8 @@ class Instructor extends Person {
   demo(subject) {
     return `Today we are learning about ${subject}`
   }
-  grade(student, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
+  grade({ name }, subject) {
+    return `${name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -77,7 +77,38 @@ class ProjectManager extends Instructor {
     return `${this.name} announces to ${channel}, @channel standy times!​​​​​`
   }
 
-  debugsCode(student, subject) {
-    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  debugsCode({name}, subject) {
+    return `${this.name} debugs ${name}'s code on ${subject}`
   }
 }
+
+const fred = new Instructor({
+  name: 'Fred',
+  location: 'Bedrock',
+  age: 37,
+  gender: 'male',
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Don't forget the homies`
+});
+
+// testing Person
+console.log(fred)
+const benjamin = new Person({
+  name: 'Benjamin',
+  age: 19,
+  gender: 'Male',
+  location: 'Lagos'
+});
+const kells = new Person({
+  name: 'Kells',
+  age: 18,
+  gender: 'Female',
+  location: 'Lagos'
+});
+
+console.log(kells.name)
+console.log(kells.speak())
+console.log(benjamin.name)
+console.log(benjamin.speak())
+
