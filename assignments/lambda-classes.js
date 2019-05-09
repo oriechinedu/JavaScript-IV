@@ -62,3 +62,22 @@ class Student extends Person {
     return `${this.name} has begun sprint challenge on ${subject}`
   }
 }
+
+class ProjectManager extends Instructor {
+  constructor(props) {
+    super(props);
+    const {
+      gradClassName,
+      favInstructor,
+    } = props;
+    this.gradClassName = gradClassName;
+    this.favInstructor = this.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!​​​​​`
+  }
+
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
+}
