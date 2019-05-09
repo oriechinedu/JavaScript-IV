@@ -143,6 +143,37 @@ console.log(jane.favLanguage)
 console.log(jane.catchPhrase);
 console.log(jon.grade({ name: 'Doe'}, 'Javascript'))
 
+const chinedu = new Student({
+  name: 'Chinedu',
+  age: 25,
+  location: 'Lagos Nigeria',
+  gender: 'Male',
+  previousBackground: 'Web Developer',
+  className: 'WEBEU2',
+  favSubjects: [
+    'Html', 'CSS', 'JavaScript', 'PHP', 'Laravel'
+  ]
+})
+
+chinedu.listsSubjects();
+console.log(chinedu.PRAssignment('Javascript IV'))
+console.log(chinedu.sprintChallenge('Javascript IV'))
+
+const yusuf = new Student({
+  name: 'Yusuf',
+  age: 23,
+  location: 'Lagos Nigeria',
+  gender: 'Male',
+  previousBackground: 'Media operator',
+  className: 'WEBEU2',
+  favSubjects: [
+    'Html', 'CSS', 'JavaScript'
+  ]
+})
+
+yusuf.listsSubjects();
+console.log(yusuf.PRAssignment('Javascript IV'))
+console.log(yusuf.previousBackground)
 
 
 
