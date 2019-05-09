@@ -2,16 +2,16 @@
 
 class Person {
   constructor(props) {
-    const { 
-      name, 
-      age, 
+    const {
+      name,
+      age,
       location,
       gender
-     } = props;
-     this.name = name;
-     this.age = age;
-     this.location = location;
-     this.gender = gender;
+    } = props;
+    this.name = name;
+    this.age = age;
+    this.location = location;
+    this.gender = gender;
   }
   speak() {
     return `Hello my name is ${this.name}, I am from ${this.location}`
@@ -21,14 +21,14 @@ class Person {
 class Instructor extends Person {
   constructor(props) {
     super(props)
-    const { 
+    const {
       specialty,
       favLanguage,
       catchPhrase
     } = props;
     this.specialty = specialty;
     this.favLanguage = favLanguage;
-    this.catchPhrase = catchPhrase; 
+    this.catchPhrase = catchPhrase;
   }
   demo(subject) {
     return `Today we are learning about ${subject}`
@@ -36,6 +36,24 @@ class Instructor extends Person {
   grade({ name }, subject) {
     return `${name} receives a perfect score on ${subject}`;
   }
+  manageStudent(studentObj, addScore = true) {
+    if (studentObj instanceof Student) {
+      if (studentObj.grade > 70) {
+        return `${studentObj.name} has graduated`;
+      } else {
+        if (addScore) {
+          studentObj.grade = studentObj.grade + Math.floor((Math.random() * 10));
+        } else {
+          studentObj.grade = studentObj.grade - Math.floor((Math.random() * 10));
+        }
+      }
+
+      return `${studentObj.name}'s grade is ${studentObj.grade}`
+    } else {
+      return 'The student is not valid'
+    }
+  }
+
 }
 
 class Student extends Person {
@@ -45,11 +63,11 @@ class Student extends Person {
       previousBackground,
       className,
       favSubjects,
-      grade
     } = props;
     this.previousBackground = previousBackground;
     this.className = className;
     this.favSubjects = favSubjects;
+    this.grade = 50;
   }
   listsSubjects() {
     this.favSubjects.forEach(subject => {
@@ -78,7 +96,7 @@ class ProjectManager extends Instructor {
     return `${this.name} announces to ${channel}, @channel standy times!​​​​​`
   }
 
-  debugsCode({name}, subject) {
+  debugsCode({ name }, subject) {
     return `${this.name} debugs ${name}'s code on ${subject}`
   }
 }
@@ -127,7 +145,7 @@ const jon = new Instructor({
 });
 
 console.log(jon.demo('Advanced CSS'))
-console.log(jon.grade({ name: 'Vincent'}, 'Advanced CSS'))
+console.log(jon.grade({ name: 'Vincent' }, 'Advanced CSS'))
 console.log(jon.favLanguage)
 
 const jane = new Instructor({
@@ -142,7 +160,7 @@ const jane = new Instructor({
 
 console.log(jane.favLanguage)
 console.log(jane.catchPhrase);
-console.log(jon.grade({ name: 'Doe'}, 'Javascript'))
+console.log(jon.grade({ name: 'Doe' }, 'Javascript'))
 
 const chinedu = new Student({
   name: 'Chinedu',
@@ -173,23 +191,24 @@ const yusuf = new Student({
 })
 
 yusuf.listsSubjects();
+
 console.log(yusuf.PRAssignment('Javascript IV'))
 console.log(yusuf.previousBackground)
 
-const sorin = new ProjectManager({
+const pm1 = new ProjectManager({
   name: 'Sorin',
   age: 28,
-  location: 'Romania',
+  location: 'Iceland',
   gender: 'Male',
   gradClassName: 'WEBEU1',
-  favInstructor: 'Josh',
+  favInstructor: 'Kneil',
   specialty: 'Backend',
   favLanguage: 'Javascript',
   catchPhrase: 'Life is good with beautiful lines of code 😊'
 })
-console.log(sorin.catchPhrase)
-console.log(sorin.standUp('webeu2_sorin'))
-console.log(sorin.debugsCode({name: 'Chinedu'}, 'Javascript IV'))
+console.log(pm1.catchPhrase)
+console.log(pm1.standUp('webeu2_sorin'))
+console.log(pm1.debugsCode({ name: 'Chinedu' }, 'Javascript IV'))
 
 const foo = new ProjectManager({
   name: 'Foo',
@@ -205,7 +224,17 @@ const foo = new ProjectManager({
 
 console.log(foo.catchPhrase)
 console.log(foo.standUp('webeu2_foo'))
-console.log(foo.debugsCode({name: 'bar'}, 'Javascript IV'))
+console.log(foo.debugsCode({ name: 'bar' }, 'Javascript IV'))
+
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(yusuf))
+console.log(pm1.manageStudent(foo, false))
+
 
 
 
